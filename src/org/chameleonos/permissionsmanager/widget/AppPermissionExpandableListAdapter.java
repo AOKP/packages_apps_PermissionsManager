@@ -19,9 +19,14 @@ package org.chameleonos.permissionsmanager.widget;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.WindowManager;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 import org.chameleonos.permissionsmanager.R;
@@ -36,6 +41,9 @@ public class AppPermissionExpandableListAdapter extends BaseExpandableListAdapte
     private Context mContext;
     private List<AppPermsInfo> mInstalledPackages;
     private PackageManager mPm;
+    private DisplayMetrics mDisplayMetrics;
+    private WindowManager mWindowManager;
+    private int mDesiredSize;
 
     /**
      *
@@ -47,6 +55,10 @@ public class AppPermissionExpandableListAdapter extends BaseExpandableListAdapte
         mContext = context;
         mInstalledPackages = installedPackages;
         mPm = context.getPackageManager();
+        mDisplayMetrics = new DisplayMetrics();
+        mWindowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        mWindowManager.getDefaultDisplay().getMetrics(mDisplayMetrics);
+        mDesiredSize = (int) (48 * mDisplayMetrics.density);
     }
 
     /* (non-Javadoc)
@@ -136,6 +148,15 @@ public class AppPermissionExpandableListAdapter extends BaseExpandableListAdapte
         if (api.mIcon == null) {
             try {
                 api.mIcon = mPm.getApplicationIcon(mInstalledPackages.get(groupPosition).mPkgInfo.packageName);
+                int width = api.mIcon.getIntrinsicWidth();
+                if (width > mDesiredSize) {
+                    Bitmap bm = ((BitmapDrawable) api.mIcon).getBitmap();
+                    if (bm != null) {
+                        Bitmap bitmapOrig = Bitmap.createScaledBitmap(bm, mDesiredSize, mDesiredSize, false);
+                        api.mIcon = new BitmapDrawable(mContext.getResources(), bitmapOrig);
+                    }
+                }
+
             } catch (NameNotFoundException e) {
                 api.mIcon = mPm.getDefaultActivityIcon();
             }
