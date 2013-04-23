@@ -27,6 +27,8 @@ import android.widget.TextView;
 import org.chameleonos.permissionsmanager.R;
 import org.chameleonos.permissionsmanager.data.AppPermsInfo;
 
+import java.text.Collator;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -46,6 +48,8 @@ public class AppPermissionExpandableListAdapter extends BaseExpandableListAdapte
     public AppPermissionExpandableListAdapter(Context context, List<AppPermsInfo> installedPackages) {
         mContext = context;
         mInstalledPackages = installedPackages;
+        Collator collator = Collator.getInstance();
+        Collections.sort(mInstalledPackages, collator);
         mPm = context.getPackageManager();
     }
 
