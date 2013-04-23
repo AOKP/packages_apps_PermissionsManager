@@ -15,10 +15,10 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
     <SwitchPreference
-        android:key="enable_management"
-        android:title="@string/pref_enable_management_title"
-        android:summaryOn="@string/pref_enable_management_summary_on"
-        android:summaryOff="@string/pref_enable_management_summary_off" />
+        android:key="enable_manager"
+        android:title="@string/pref_enable_manager_title"
+        android:summaryOn="@string/pref_enable_manager_summary_on"
+        android:summaryOff="@string/pref_enable_manager_summary_off" />
     
 
 </PreferenceScreen>

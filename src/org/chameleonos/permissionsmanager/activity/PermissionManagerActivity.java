@@ -75,7 +75,7 @@ public class PermissionManagerActivity extends ExpandableListActivity
         MenuItem item = menu.getItem(0);
         mEnabled = (Switch) item.getActionView();
         mEnabled.setChecked(Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.ENABLE_PERMISSIONS_MANAGEMENT, 0) == 1);
+                Settings.Secure.ENABLE_PERMISSIONS_MANAGER, 0) == 1);
         mEnabled.setOnCheckedChangeListener(this);
         return true;
     }
@@ -215,7 +215,7 @@ public class PermissionManagerActivity extends ExpandableListActivity
     public void onCheckedChanged(CompoundButton compoundButton, boolean newValue) {
         if (compoundButton == mEnabled) {
             Settings.Secure.putInt(mContext.getContentResolver(),
-                    Settings.Secure.ENABLE_PERMISSIONS_MANAGEMENT,
+                    Settings.Secure.ENABLE_PERMISSIONS_MANAGER,
                     newValue == true ? 1 : 0);
         }
     }
