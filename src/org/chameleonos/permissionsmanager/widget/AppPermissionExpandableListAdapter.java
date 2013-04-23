@@ -27,6 +27,9 @@ import android.widget.TextView;
 import org.chameleonos.permissionsmanager.R;
 import org.chameleonos.permissionsmanager.data.AppPermsInfo;
 
+import java.text.Collator;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -46,6 +49,7 @@ public class AppPermissionExpandableListAdapter extends BaseExpandableListAdapte
     public AppPermissionExpandableListAdapter(Context context, List<AppPermsInfo> installedPackages) {
         mContext = context;
         mInstalledPackages = installedPackages;
+        Collections.sort(mInstalledPackages, new IgnoreCaseComp());
         mPm = context.getPackageManager();
     }
 
@@ -162,4 +166,19 @@ public class AppPermissionExpandableListAdapter extends BaseExpandableListAdapte
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
+
+    class IgnoreCaseComp implements Comparator<AppPermsInfo> {
+        Collator collator;
+
+        IgnoreCaseComp() {
+            collator = Collator.getInstance();
+
+            collator.setStrength(Collator.PRIMARY);
+        }
+
+        public int compare(AppPermsInfo infoA, AppPermsInfo infoB) {
+            return collator.compare(infoA.mAppName, infoB.mAppName);
+        }
+    }
+
 }
