@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The ChameleonOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+
+    <string name="app_name">Behörighets Hantering</string>
+    <string name="action_settings">Inställningar</string>
+    <string name="title_settings">Inställningar</string>
+    <string name="title_apps">Appar</string>
+    <string name="title_activity_manager">Behörighets Aktivitet</string>
+    <string name="pref_enable_management_title">Aktivera behörigheter</string>
+    <string name="pref_enable_management_summary_on">Behörighets hantering är aktiverad</string>
+    <string name="pref_enable_management_summary_off">Behörighets hantering är avaktiverad</string>
+    <string name="tab_settings">Inställningar</string>
+    <string name="tab_apps">Appar</string>
+
+    <string name="switch_label">Behörigheter</string>
+
+    <string name="dlg_perm_info_dismiss">Avvisa</string>
+
+    <string name="dlg_disclaimer_title">Negativa biverkningar</string>
+    <string name="dlg_disclaimer_message">Återkallande av behörigheter kan orsaka program missköter sig eller kraschar. Vi ber dig ha detta i åtanke när återkalla behörigheter.\n\nOm du återkallar behörigheter och ett program inte fungerar som du tycker att det borde, vänligen återställ återkallade behörigheter och försök igen innan du förutsätter att applikationen är felaktig eller dåligt utformad.\n\nAllt vi begär är att du återkallar på ett ansvarsfullt sätt.</string>
+    <string name="dlg_disclaimer_agree">Jag förstår</string>
+    <string name="dlg_tldr_message">Om du återkallar behörigheter, förväntar appar missköta sig och/eller tvångsavstängning.\n\nVänligen återkalla ansvarsfullt.</string>
+    <string name="dlg_tldr_disagree">Avsluta</string>
+
+</resources>
